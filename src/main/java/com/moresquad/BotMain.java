@@ -1,5 +1,6 @@
 package com.moresquad;
 
+import com.sun.xml.internal.ws.util.CompletedFuture;
 import com.ullink.slack.simpleslackapi.SlackChannel;
 import com.ullink.slack.simpleslackapi.SlackSession;
 import com.ullink.slack.simpleslackapi.impl.SlackSessionFactory;
@@ -12,8 +13,10 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.nio.charset.Charset;
+import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
 import java.util.Properties;
+import java.util.concurrent.*;
 
 public class BotMain {
 
@@ -49,8 +52,8 @@ public class BotMain {
 
                 if (event.getMessageContent().contains("обзови ")) {
                     try {
-                        session1.sendMessage(event.getChannel(), callSomebody(event.getMessageContent().replace("обзови ", "")));
-                    } catch (IOException e) {
+                        session1.sendMessage(event.getChannel(), scheduleCallSb(event.getMessageContent().replace("обзови ", "")));
+                    } catch (InterruptedException | ExecutionException | TimeoutException e) {
                         session1.sendMessage(event.getChannel(), "чет не вышло :cry:");
                     }
                 }
@@ -58,12 +61,22 @@ public class BotMain {
         });
     }
 
+
+    private synchronized static String scheduleCallSb(String name) throws InterruptedException, ExecutionException, TimeoutException {
+        ExecutorService exec = Executors.newSingleThreadExecutor();
+        String f = exec.submit(() -> callSomebody(name)).get(10, TimeUnit.SECONDS);
+        return f;
+    }
+
     private static String callSomebody(String name) throws IOException {
         HttpGet get = new HttpGet("https://damn.ru/?name=" + name + "&sex=m");
         CloseableHttpResponse res = client.execute(get);
         StringWriter writer = new StringWriter();
         IOUtils.copy(res.getEntity().getContent(), writer, Charset.defaultCharset());
-        return getMessageFromResp(writer.toString());
+        String mess = writer.toString();
+        res.close();
+        writer.close();
+        return getMessageFromResp(mess);
     }
 
     private static String getMessageFromResp(String s) {
