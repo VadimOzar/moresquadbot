@@ -16,6 +16,7 @@ import java.nio.charset.Charset;
 import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
 import java.util.Properties;
+import java.util.Random;
 import java.util.concurrent.*;
 
 public class BotMain {
@@ -29,6 +30,7 @@ public class BotMain {
     public static void main(String[] args) throws IOException {
 
         client = HttpClientBuilder.create().build();
+        Random random = new Random();
 
         Properties pro = new Properties();
         pro.load(BotMain.class.getResourceAsStream("/project.properties"));
@@ -42,10 +44,12 @@ public class BotMain {
 
                 if (containsMax(message))
                     session1.sendMessage(event.getChannel(), "Аве максім!!");
-                if (event.getMessageContent().contains("слава україні")) 
+                if (event.getMessageContent().contains("слава україні"))
                     session1.sendMessage(event.getChannel(), "Максу слава :pride:");
-                if (event.getSender().getUserName().equals("lendyelushka"))
+                if (event.getSender().getUserName().equals("lendyelushka") && (event.getMessageContent().contains("сука") || event.getMessageContent().contains("уйобок")))
                     session1.sendMessage(event.getChannel(), "Я краще б і не сказав");
+                if (event.getSender().getUserName().equals("lendyelushka") && random.nextInt(100) > 1 )
+                    session1.sendMessage(event.getChannel(), "Я так рідко тобі це кажу, але я люблю тебе МАКС!!!");
                 if (event.getMessageContent().contains("буха"))
                     session1.sendMessage(event.getChannel(), "Хтось сказав бухати???? Я за!! І Макс к стате тоже :beers: :beer: :beers:");
                 if (event.getMessageContent().contains("вадім"))
