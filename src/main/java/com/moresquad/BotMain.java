@@ -59,7 +59,7 @@ public class BotMain {
 					try {
 						if (event.getMessageContent().contains("вадім"){
 							session1.sendMessage(event.getChannel(), "Вадім - мати моя любима. Не можна обзивати його, обізватий будеш ти!");
-							session1.sendMessage(event.getChannel(), scheduleCallSb(event.getSender().getUserName())+":hankey::hankey::hankey:");
+							session1.sendMessage(event.getChannel(), scheduleCallSb(event.getSender().getUserName()+":hankey::hankey::hankey:");
 						}  else{
 							session1.sendMessage(event.getChannel(), scheduleCallSb(event.getMessageContent().replace("обзови ", "")));
 						}	
