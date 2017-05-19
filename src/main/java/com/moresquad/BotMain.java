@@ -42,13 +42,14 @@ public class BotMain {
 
                 if (containsMax(message))
                     session1.sendMessage(event.getChannel(), "Аве максім!!");
-                else if (event.getMessageContent().contains("слава україні")) {
+                if (event.getMessageContent().contains("слава україні")) 
                     session1.sendMessage(event.getChannel(), "Максу слава :pride:");
-                } else if (event.getSender().getUserName().equals("lendyelushka")) {
+                if (event.getSender().getUserName().equals("lendyelushka"))
                     session1.sendMessage(event.getChannel(), "Я краще б і не сказав");
-                } else if (event.getMessageContent().contains("буха")) {
+                if (event.getMessageContent().contains("буха"))
                     session1.sendMessage(event.getChannel(), "Хтось сказав бухати???? Я за!! І Макс к стате тоже :beers: :beer: :beers:");
-                }
+                if (event.getMessageContent().contains("вадім"))
+                    session1.sendMessage(event.getChannel(), "Ти щось сказав про мою мамку? :middle_finger::angry:");
 
                 if (event.getMessageContent().contains("обзови ")) {
                     try {
