@@ -48,7 +48,7 @@ public class BotMain {
                     session1.sendMessage(event.getChannel(), "Максу слава :pride:");
                 if (event.getSender().getUserName().equals("lendyelushka") && (event.getMessageContent().contains("сука") || event.getMessageContent().contains("уйобок")))
                     session1.sendMessage(event.getChannel(), "Я краще б і не сказав");
-                if (event.getSender().getUserName().equals("lendyelushka") && random.nextInt(100) > 1 )
+                if (event.getSender().getUserName().equals("lendyelushka") && random.nextInt(100) > 98 )
                     session1.sendMessage(event.getChannel(), "Я так рідко тобі це кажу, але я люблю тебе МАКС!!!");
                 if (event.getMessageContent().contains("буха"))
                     session1.sendMessage(event.getChannel(), "Хтось сказав бухати???? Я за!! І Макс к стате тоже :beers: :beer: :beers:");
