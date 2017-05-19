@@ -44,6 +44,8 @@ public class BotMain {
 
                 if (containsMax(message))
                     session1.sendMessage(event.getChannel(), "Аве максім!!");
+				if (event.getMessageContent().contains("шавух") || event.getMessageContent().contains("шаурм"))
+                    session1.sendMessage(event.getChannel(), "Чуваки, я тоже шавушку хочу :burrito::burrito:");
                 if (event.getMessageContent().contains("слава україні"))
                     session1.sendMessage(event.getChannel(), "Максу слава :pride:");
                 if (event.getSender().getUserName().equals("lendyelushka") && (event.getMessageContent().contains("сука") || event.getMessageContent().contains("уйобок")))
