@@ -52,12 +52,10 @@ public class BotMain {
                     session1.sendMessage(event.getChannel(), "Я так рідко тобі це кажу, але я люблю тебе МАКС!!!");
                 if (event.getMessageContent().contains("буха"))
                     session1.sendMessage(event.getChannel(), "Хтось сказав бухати???? Я за!! І Макс к стате тоже :beers: :beer: :beers:");
-                if (event.getMessageContent().contains("вадім"))
-                    session1.sendMessage(event.getChannel(), "Ти щось сказав про мою мамку? :middle_finger::angry:");
-
                 if (event.getMessageContent().contains("обзови ")) {
                     try {
                         if (event.getMessageContent().contains("вадім")) {
+                            session1.sendMessage(event.getChannel(), "Ти щось сказав про мою мамку? :middle_finger::angry:");
                             session1.sendMessage(event.getChannel(), "Вадім - мати моя любима. Не можна обзивати його, обізватий будеш ти!");
                             session1.sendMessage(event.getChannel(), scheduleCallSb(event.getSender().getUserName()) + ":hankey::hankey::hankey:");
                         } else {
