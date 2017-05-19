@@ -56,8 +56,13 @@ public class BotMain {
                     session1.sendMessage(event.getChannel(), "Ти щось сказав про мою мамку? :middle_finger::angry:");
 
                 if (event.getMessageContent().contains("обзови ")) {
-                    try {
-                        session1.sendMessage(event.getChannel(), scheduleCallSb(event.getMessageContent().replace("обзови ", "")));
+					try {
+						if (event.getMessageContent().contains("вадім"){
+							session1.sendMessage(event.getChannel(), "Вадім - мати моя любима. Не можна обзивати його, обізватий будеш ти!");
+							session1.sendMessage(event.getChannel(), scheduleCallSb(event.getSender().getUserName()+":hankey::hankey::hankey:");
+						}  else{
+							session1.sendMessage(event.getChannel(), scheduleCallSb(event.getMessageContent().replace("обзови ", "")));
+						}	
                     } catch (InterruptedException | ExecutionException | TimeoutException e) {
                         session1.sendMessage(event.getChannel(), "чет не вышло :cry:");
                     }
