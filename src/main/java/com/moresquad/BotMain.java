@@ -13,6 +13,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
 import java.util.Properties;
@@ -44,7 +45,7 @@ public class BotMain {
 
                 if (containsMax(message))
                     session1.sendMessage(event.getChannel(), "Аве максім!!");
-				if (event.getMessageContent().contains("шавух") || event.getMessageContent().contains("шаурм"))
+                if (event.getMessageContent().contains("шавух") || event.getMessageContent().contains("шаурм"))
                     session1.sendMessage(event.getChannel(), "Чуваки, я тоже шавушку хочу :burrito::burrito:");
                 if (event.getMessageContent().contains("слава україні"))
                     session1.sendMessage(event.getChannel(), "Максу слава :pride:");
@@ -82,7 +83,7 @@ public class BotMain {
         HttpGet get = new HttpGet("https://damn.ru/?name=" + name + "&sex=m");
         CloseableHttpResponse res = client.execute(get);
         StringWriter writer = new StringWriter();
-        IOUtils.copy(res.getEntity().getContent(), writer, Charset.defaultCharset());
+        IOUtils.copy(res.getEntity().getContent(), writer, StandardCharsets.UTF_8);
         String mess = writer.toString();
         res.close();
         writer.close();
